@@ -60,7 +60,7 @@ export default function EnquiryForm({ packageSlug, packageTitle, destinationName
         </div>
         <div>
           <label className={labelCls}>Phone / WhatsApp *</label>
-          <input name="phone" value={form.phone} onChange={onChange} placeholder="+91 98765 43210" required className={inputCls} />
+          <input name="phone" value={form.phone} onChange={onChange} placeholder="+91 95971 00664" required className={inputCls} />
         </div>
         <div>
           <label className={labelCls}>Email</label>

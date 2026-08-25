@@ -64,7 +64,7 @@ export default function PackageDetail() {
   const nights = Math.max(p.durationDays - 1, 0);
   // Prefer real contact info from the API response; fall back to a constant
   // only if the backend hasn't supplied one, instead of always hardcoding it.
-  const contactPhone = p.contactPhone || '+91 98765 43210';
+  const contactPhone = p.contactPhone || '+91 95971 00664';
   const contactPhoneHref = `tel:${contactPhone.replace(/[^\d+]/g, '')}`;
   const groupSizeLabel = p.groupSize ? `Group size: ${p.groupSize}` : 'Group size: 2–15 people';
 

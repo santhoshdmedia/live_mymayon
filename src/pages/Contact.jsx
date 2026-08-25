@@ -5,7 +5,7 @@ import Button from '../components/ui/Button';
 import { submitEnquiry } from '../api';
 
 const CONTACT_INFO = [
-  { icon: Phone,   label: 'Phone / WhatsApp',  value: '+91 98765 43210',      href: 'tel:+919597100664' },
+  { icon: Phone,   label: 'Phone / WhatsApp',  value: '+91 95971 00664',      href: 'tel:+919597100664' },
   { icon: Mail,    label: 'Email',              value: 'hello@mymayon.com',    href: 'mailto:hello@mymayon.com' },
   { icon: MapPin,  label: 'Office',             value: 'Chennai, Tamil Nadu, India', href: null },
   { icon: Clock,   label: 'Hours',              value: 'Mon–Sat, 9 AM – 7 PM IST', href: null },
@@ -108,7 +108,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <label className={labelCls}>Phone / WhatsApp *</label>
-                      <input name="phone" value={form.phone} onChange={onChange} placeholder="+91 98765 43210" required className={inputCls} />
+                      <input name="phone" value={form.phone} onChange={onChange} placeholder="+91 95971 00664" required className={inputCls} />
                     </div>
                     <div className="sm:col-span-2">
                       <label className={labelCls}>Email</label>

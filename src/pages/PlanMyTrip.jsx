@@ -64,7 +64,7 @@ export default function PlanMyTrip() {
 
               <div className="bg-white border border-navy-100 rounded-2xl p-6 text-center">
                 <p className="text-navy-500 text-sm mb-2">Prefer to call us?</p>
-                <a href="tel:+919597100664" className="text-2xl font-bold text-navy-800 hover:text-gold-600 transition">+91 98765 43210</a>
+                <a href="tel:+919597100664" className="text-2xl font-bold text-navy-800 hover:text-gold-600 transition">+91 95971 00664</a>
                 <p className="text-xs text-navy-400 mt-1">Mon–Sat, 9 AM – 7 PM IST</p>
               </div>
             </div>

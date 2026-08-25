@@ -49,7 +49,7 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               <a href="tel:+919597100664" className="flex items-center gap-2 hover:text-gold-300 transition">
-                <Phone className="w-4 h-4 text-gold-400" /> +91 98765 43210
+                <Phone className="w-4 h-4 text-gold-400" /> +91 95971 00664
               </a>
               <a href="mailto:hello@mymayon.com" className="flex items-center gap-2 hover:text-gold-300 transition">
                 <Mail className="w-4 h-4 text-gold-400" /> hello@mymayon.com

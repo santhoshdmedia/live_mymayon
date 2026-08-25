@@ -94,7 +94,7 @@ export default function Partner() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div><label className={labelCls}>Your Name *</label><input name="name" value={form.name} onChange={onChange} placeholder="Full name" required className={inputCls} /></div>
                   <div><label className={labelCls}>Business Name</label><input name="business" value={form.business} onChange={onChange} placeholder="Hotel / Company name" className={inputCls} /></div>
-                  <div><label className={labelCls}>Phone *</label><input name="phone" value={form.phone} onChange={onChange} placeholder="+91 98765 43210" required className={inputCls} /></div>
+                  <div><label className={labelCls}>Phone *</label><input name="phone" value={form.phone} onChange={onChange} placeholder="+91 95971 00664" required className={inputCls} /></div>
                   <div><label className={labelCls}>Email</label><input name="email" type="email" value={form.email} onChange={onChange} placeholder="you@business.com" className={inputCls} /></div>
                 </div>
                 <div><label className={labelCls}>Partner Type</label>
