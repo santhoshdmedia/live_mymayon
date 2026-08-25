@@ -29,7 +29,7 @@ export default function CTA() {
               24 hours with a personalised itinerary — at no cost, no obligation.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <a href="tel:+919876543210">
+              <a href="tel:+919597100664">
                 <Button variant="ghost" size="lg">
                   <Phone className="w-5 h-5" /> Call Us
                 </Button>

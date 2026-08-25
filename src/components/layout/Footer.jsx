@@ -48,7 +48,7 @@ export default function Footer() {
               Memorable journeys, curated memories — your trusted partner for spiritual circuits and cultural escapes across Tamil Nadu.
             </p>
             <div className="space-y-2 text-sm">
-              <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-gold-300 transition">
+              <a href="tel:+919597100664" className="flex items-center gap-2 hover:text-gold-300 transition">
                 <Phone className="w-4 h-4 text-gold-400" /> +91 98765 43210
               </a>
               <a href="mailto:hello@mymayon.com" className="flex items-center gap-2 hover:text-gold-300 transition">

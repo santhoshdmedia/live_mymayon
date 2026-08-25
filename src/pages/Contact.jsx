@@ -5,7 +5,7 @@ import Button from '../components/ui/Button';
 import { submitEnquiry } from '../api';
 
 const CONTACT_INFO = [
-  { icon: Phone,   label: 'Phone / WhatsApp',  value: '+91 98765 43210',      href: 'tel:+919876543210' },
+  { icon: Phone,   label: 'Phone / WhatsApp',  value: '+91 98765 43210',      href: 'tel:+919597100664' },
   { icon: Mail,    label: 'Email',              value: 'hello@mymayon.com',    href: 'mailto:hello@mymayon.com' },
   { icon: MapPin,  label: 'Office',             value: 'Chennai, Tamil Nadu, India', href: null },
   { icon: Clock,   label: 'Hours',              value: 'Mon–Sat, 9 AM – 7 PM IST', href: null },
