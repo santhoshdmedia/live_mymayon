@@ -4,6 +4,7 @@ import SectionTitle from '../components/ui/SectionTitle';
 import { TriangleWatermark } from '../components/ui/Ornament';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const CIRCUITS = [
   { name: 'Arupadai Veedu',         temples: 6,   desc: 'Six abodes of Lord Murugan — Palani, Swamimalai, Tiruchendur, Thirupparamkunram, Thiruthani, Pazhamudircholai.' },
@@ -24,34 +25,46 @@ const FESTIVALS = [
 ];
 
 export default function SpiritualTourism() {
+  const ref = useScrollReveal();
+
   return (
-    <div>
+    <div ref={ref}>
       <section className="relative bg-navy-radial text-cream py-20 overflow-hidden">
         <TriangleWatermark className="absolute -top-10 -right-20 w-[400px] opacity-[0.08]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p className="font-accent italic text-gold-300 text-xl mb-2">Spiritual Tourism</p>
-          <h1 className="text-5xl font-bold mb-4 max-w-2xl leading-tight">Where Every Step Is a Prayer</h1>
-          <p className="text-navy-100 max-w-xl text-lg leading-relaxed mb-8">
+          <p className="font-accent italic text-gold-300 text-xl mb-2 animate-fade-in-down" style={{ animationDelay: '100ms' }}>Spiritual Tourism</p>
+          <h1 className="text-5xl font-bold mb-4 max-w-2xl leading-tight animate-fade-in-up" style={{ animationDelay: '200ms' }}>Where Every Step Is a Prayer</h1>
+          <p className="text-navy-100 max-w-xl text-lg leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: '350ms' }}>
             Tamil Nadu's sacred circuits have guided pilgrims for over two millennia. Let us plan your darshan — from the first gopuram to the final prasadam.
           </p>
-          <Link to="/packages?type=spiritual"><Button size="lg">Explore Spiritual Packages <ArrowRight className="w-5 h-5" /></Button></Link>
+          <div className="animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+            <Link to="/packages?type=spiritual"><Button size="lg">Explore Spiritual Packages <ArrowRight className="w-5 h-5" /></Button></Link>
+          </div>
         </div>
       </section>
 
       <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Sacred Circuits" title="Plan Your Pilgrimage" description="Each circuit is a complete spiritual journey. We handle stays, transport and guide — you focus on the divine." centered />
+          <div className="scroll-reveal reveal-up">
+            <SectionTitle eyebrow="Sacred Circuits" title="Plan Your Pilgrimage" description="Each circuit is a complete spiritual journey. We handle stays, transport and guide — you focus on the divine." centered />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {CIRCUITS.map((c) => (
-              <Card key={c.name} hover className="relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gold-50 rounded-bl-full opacity-50" />
-                <span className="text-xs font-bold text-gold-600 bg-gold-50 px-2 py-1 rounded-full">{c.temples} temples</span>
-                <h3 className="font-bold text-navy-800 text-lg mt-3 mb-2">{c.name}</h3>
-                <p className="text-navy-500 text-sm leading-relaxed">{c.desc}</p>
-                <Link to={`/packages?circuit=${encodeURIComponent(c.name)}`} className="inline-flex items-center gap-1 text-gold-600 text-sm font-semibold mt-4 hover:gap-2 transition-all">
-                  See packages <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Card>
+            {CIRCUITS.map((c, i) => (
+              <div
+                key={c.name}
+                className="scroll-reveal reveal-up"
+                style={{ animationDelay: `${200 + i * 100}ms` }}
+              >
+                <Card hover className="relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gold-50 rounded-bl-full opacity-50" />
+                  <span className="text-xs font-bold text-gold-600 bg-gold-50 px-2 py-1 rounded-full">{c.temples} temples</span>
+                  <h3 className="font-bold text-navy-800 text-lg mt-3 mb-2">{c.name}</h3>
+                  <p className="text-navy-500 text-sm leading-relaxed">{c.desc}</p>
+                  <Link to={`/packages?circuit=${encodeURIComponent(c.name)}`} className="inline-flex items-center gap-1 text-gold-600 text-sm font-semibold mt-4 hover:gap-2 transition-all">
+                    See packages <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -59,10 +72,16 @@ export default function SpiritualTourism() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Festival Calendar" title="Time Your Visit for a Festival" centered />
+          <div className="scroll-reveal reveal-up">
+            <SectionTitle eyebrow="Festival Calendar" title="Time Your Visit for a Festival" centered />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-            {FESTIVALS.map((f) => (
-              <div key={f.name} className="flex gap-4 bg-cream border border-navy-100 rounded-2xl p-5">
+            {FESTIVALS.map((f, i) => (
+              <div
+                key={f.name}
+                className="scroll-reveal reveal-up flex gap-4 bg-cream border border-navy-100 rounded-2xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                style={{ animationDelay: `${200 + i * 80}ms` }}
+              >
                 <div className="w-2 rounded-full bg-gold-500 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-navy-800 mb-0.5">{f.name}</h4>
@@ -72,7 +91,7 @@ export default function SpiritualTourism() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
+          <div className="text-center mt-10 scroll-reveal reveal-up" style={{ animationDelay: '600ms' }}>
             <Link to="/plan-my-trip?type=spiritual"><Button size="lg">Plan a Festival Trip <ArrowRight className="w-5 h-5" /></Button></Link>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { TriangleWatermark } from '../components/ui/Ornament';
 import SectionTitle from '../components/ui/SectionTitle';
 import Badge from '../components/ui/Badge';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const POSTS = [
   { slug:'arupadai-veedu-guide',         tag:'Spiritual',  title:'The Complete Guide to Arupadai Veedu in 5 Days', author:'My Mayon Team', date:'15 Jul 2026', readTime:'8 min', summary:'Everything you need to plan the six Murugan temple circuit — best season, transport, accommodation and darshan tips.' },
@@ -16,21 +17,23 @@ const POSTS = [
 const TAG_COLORS = { Spiritual:'bg-rose-50 text-rose-700', Heritage:'bg-amber-50 text-amber-700', Food:'bg-orange-50 text-orange-700', Coastal:'bg-blue-50 text-blue-700', Nature:'bg-green-50 text-green-700' };
 
 export default function Blog() {
+  const ref = useScrollReveal();
+
   return (
-    <div>
+    <div ref={ref}>
       <section className="relative bg-navy-radial text-cream py-20 overflow-hidden">
         <TriangleWatermark className="absolute -top-10 -right-20 w-[400px] opacity-[0.08]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="font-accent italic text-gold-300 text-xl mb-2">Travel Stories</p>
-          <h1 className="text-5xl font-bold mb-4">The My Mayon Journal</h1>
-          <p className="text-navy-100 max-w-xl mx-auto text-lg">Practical guides, pilgrimage notes and local insights written by people who've been there.</p>
+          <p className="font-accent italic text-gold-300 text-xl mb-2 animate-fade-in-down" style={{ animationDelay: '100ms' }}>Travel Stories</p>
+          <h1 className="text-5xl font-bold mb-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>The My Mayon Journal</h1>
+          <p className="text-navy-100 max-w-xl mx-auto text-lg animate-fade-in-up" style={{ animationDelay: '350ms' }}>Practical guides, pilgrimage notes and local insights written by people who've been there.</p>
         </div>
       </section>
 
       <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured post */}
-          <div className="bg-white rounded-3xl overflow-hidden border border-navy-100 shadow-lg mb-10 grid grid-cols-1 lg:grid-cols-2">
+          <div className="scroll-reveal reveal-up bg-white rounded-3xl overflow-hidden border border-navy-100 shadow-lg mb-10 grid grid-cols-1 lg:grid-cols-2 hover:shadow-2xl transition-shadow duration-500">
             <div className="h-64 lg:h-auto bg-navy-radial flex items-center justify-center p-12">
               <span className="text-8xl">🛕</span>
             </div>
@@ -51,9 +54,10 @@ export default function Blog() {
 
           {/* Rest of posts */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {POSTS.slice(1).map(post => (
+            {POSTS.slice(1).map((post, i) => (
               <Link key={post.slug} to={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden border border-navy-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                className="scroll-reveal reveal-up group bg-white rounded-2xl overflow-hidden border border-navy-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col"
+                style={{ animationDelay: `${200 + i * 100}ms` }}>
                 <div className="h-40 bg-navy-radial flex items-center justify-center">
                   <span className="text-5xl">{ post.tag === 'Heritage' ? '🏛️' : post.tag === 'Food' ? '🍛' : post.tag === 'Coastal' ? '🌊' : post.tag === 'Nature' ? '🌿' : '🛕' }</span>
                 </div>

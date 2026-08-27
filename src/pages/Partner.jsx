@@ -5,6 +5,7 @@ import SectionTitle from '../components/ui/SectionTitle';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { submitEnquiry } from '../api';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const TYPES = [
   { icon: Hotel,    label:'Accommodation',    desc:'Hotels, homestays, resorts and heritage properties.' },
@@ -19,6 +20,7 @@ export default function Partner() {
   const [status, setStatus] = useState('idle');
   const [err, setErr] = useState('');
   const onChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  const ref = useScrollReveal();
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -34,29 +36,37 @@ export default function Partner() {
   const labelCls = 'block text-xs font-semibold text-navy-600 uppercase tracking-wide mb-1';
 
   return (
-    <div>
+    <div ref={ref}>
       <section className="relative bg-navy-radial text-cream py-20 overflow-hidden">
         <TriangleWatermark className="absolute -top-10 -right-20 w-[400px] opacity-[0.08]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="font-accent italic text-gold-300 text-xl mb-2">Partner With Us</p>
-          <h1 className="text-5xl font-bold mb-4">Grow Together with My Mayon</h1>
-          <p className="text-navy-100 max-w-xl mx-auto text-lg leading-relaxed">Join our network of verified local partners and reach travellers who are actively planning their Tamil Nadu journey.</p>
+          <p className="font-accent italic text-gold-300 text-xl mb-2 animate-fade-in-down" style={{ animationDelay: '100ms' }}>Partner With Us</p>
+          <h1 className="text-5xl font-bold mb-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>Grow Together with My Mayon</h1>
+          <p className="text-navy-100 max-w-xl mx-auto text-lg leading-relaxed animate-fade-in-up" style={{ animationDelay: '350ms' }}>Join our network of verified local partners and reach travellers who are actively planning their Tamil Nadu journey.</p>
         </div>
       </section>
 
       {/* Partner types */}
       <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle eyebrow="Who Can Join" title="We Welcome All Travel Partners" centered />
+          <div className="scroll-reveal reveal-up">
+            <SectionTitle eyebrow="Who Can Join" title="We Welcome All Travel Partners" centered />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-            {TYPES.map(({ icon: Icon, label, desc }) => (
-              <Card key={label} hover className="text-center">
-                <div className="w-12 h-12 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-6 h-6 text-gold-600" />
-                </div>
-                <h3 className="font-bold text-navy-800 mb-2">{label}</h3>
-                <p className="text-navy-500 text-sm">{desc}</p>
-              </Card>
+            {TYPES.map(({ icon: Icon, label, desc }, i) => (
+              <div
+                key={label}
+                className="scroll-reveal reveal-up"
+                style={{ animationDelay: `${200 + i * 120}ms` }}
+              >
+                <Card hover className="text-center">
+                  <div className="w-12 h-12 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-6 h-6 text-gold-600" />
+                  </div>
+                  <h3 className="font-bold text-navy-800 mb-2">{label}</h3>
+                  <p className="text-navy-500 text-sm">{desc}</p>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -65,25 +75,25 @@ export default function Partner() {
       {/* Benefits + Form */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
+          <div className="scroll-reveal reveal-left">
             <h2 className="text-3xl font-bold text-navy-800 mb-6">Why Partner With Us?</h2>
             <ul className="space-y-4 mb-8">
-              {BENEFITS.map(b => (
-                <li key={b} className="flex items-start gap-3">
+              {BENEFITS.map((b, i) => (
+                <li key={b} className="flex items-start gap-3" style={{ animationDelay: `${i * 80}ms` }}>
                   <CheckCircle2 className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
                   <span className="text-navy-600">{b}</span>
                 </li>
               ))}
             </ul>
-            <div className="bg-gold-50 border border-gold-200 rounded-2xl p-6">
+            <div className="bg-gold-50 border border-gold-200 rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300">
               <p className="font-bold text-navy-800 mb-1">12,000+ travellers and counting</p>
               <p className="text-navy-500 text-sm">Our partner network already spans 38 districts — join them.</p>
             </div>
           </div>
 
-          <div className="bg-cream rounded-3xl border border-navy-100 p-8">
+          <div className="scroll-reveal reveal-right bg-cream rounded-3xl border border-navy-100 p-8" style={{ animationDelay: '200ms' }}>
             {status === 'success' ? (
-              <div className="flex flex-col items-center gap-4 py-10 text-center">
+              <div className="flex flex-col items-center gap-4 py-10 text-center animate-scale-up">
                 <CheckCircle2 className="w-14 h-14 text-green-500" />
                 <h3 className="text-xl font-bold text-navy-800">Application received!</h3>
                 <p className="text-navy-500 text-sm max-w-xs">Our partnerships team will contact you within 2 business days.</p>

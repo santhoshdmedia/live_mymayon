@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
 import { TriangleWatermark } from '../components/ui/Ornament';
 import Button from '../components/ui/Button';
 import { submitEnquiry } from '../api';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const CONTACT_INFO = [
   { icon: Phone,   label: 'Phone / WhatsApp',  value: '+91 95971 00664',      href: 'tel:+919597100664' },
@@ -16,6 +17,7 @@ export default function Contact() {
   const [status, setStatus] = useState('idle');
   const [err, setErr]     = useState('');
   const onChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  const ref = useScrollReveal();
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -34,14 +36,14 @@ export default function Contact() {
   const labelCls = 'block text-xs font-semibold text-navy-600 uppercase tracking-wide mb-1';
 
   return (
-    <div>
+    <div ref={ref}>
       {/* Hero */}
       <section className="relative bg-navy-radial text-cream py-20 overflow-hidden">
         <TriangleWatermark className="absolute -top-10 -right-20 w-[400px] opacity-[0.08]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="font-accent italic text-gold-300 text-xl mb-2">Get In Touch</p>
-          <h1 className="text-5xl font-bold mb-4">We'd Love to Hear From You</h1>
-          <p className="text-navy-100 max-w-xl mx-auto text-lg">
+          <p className="font-accent italic text-gold-300 text-xl mb-2 animate-fade-in-down" style={{ animationDelay: '100ms' }}>Get In Touch</p>
+          <h1 className="text-5xl font-bold mb-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>We'd Love to Hear From You</h1>
+          <p className="text-navy-100 max-w-xl mx-auto text-lg animate-fade-in-up" style={{ animationDelay: '350ms' }}>
             Planning a trip, have a question, or just want to say hello — we're here.
           </p>
         </div>
@@ -53,9 +55,13 @@ export default function Contact() {
 
             {/* Contact details */}
             <div className="space-y-5">
-              <h2 className="text-2xl font-bold text-navy-800 mb-6">Contact Details</h2>
-              {CONTACT_INFO.map(({ icon: Icon, label, value, href }) => (
-                <div key={label} className="flex items-start gap-4 bg-white border border-navy-100 rounded-2xl p-5 shadow-sm">
+              <h2 className="text-2xl font-bold text-navy-800 mb-6 scroll-reveal reveal-left">Contact Details</h2>
+              {CONTACT_INFO.map(({ icon: Icon, label, value, href }, i) => (
+                <div
+                  key={label}
+                  className="scroll-reveal reveal-left flex items-start gap-4 bg-white border border-navy-100 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  style={{ animationDelay: `${200 + i * 100}ms` }}
+                >
                   <div className="w-10 h-10 rounded-xl bg-gold-50 border border-gold-100 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-5 h-5 text-gold-600" />
                   </div>
@@ -70,7 +76,7 @@ export default function Contact() {
               ))}
 
               {/* Quick links */}
-              <div className="bg-navy-800 rounded-2xl p-6 text-cream mt-6">
+              <div className="scroll-reveal reveal-left bg-navy-800 rounded-2xl p-6 text-cream mt-6" style={{ animationDelay: '600ms' }}>
                 <h3 className="font-bold text-base mb-3">Quick Actions</h3>
                 <div className="space-y-2">
                   {[
@@ -88,9 +94,9 @@ export default function Contact() {
             </div>
 
             {/* Contact form */}
-            <div className="lg:col-span-2 bg-white rounded-3xl border border-navy-100 shadow-lg p-8">
+            <div className="lg:col-span-2 scroll-reveal reveal-right bg-white rounded-3xl border border-navy-100 shadow-lg p-8" style={{ animationDelay: '300ms' }}>
               {status === 'success' ? (
-                <div className="flex flex-col items-center gap-4 py-12 text-center">
+                <div className="flex flex-col items-center gap-4 py-12 text-center animate-scale-up">
                   <CheckCircle2 className="w-16 h-16 text-green-500" />
                   <h3 className="text-2xl font-bold text-navy-800">Message received!</h3>
                   <p className="text-navy-500 max-w-sm">We'll get back to you within 24 hours. If it's urgent, please call us directly.</p>

@@ -22,3 +22,262 @@
     overflow: hidden;
   }
 }
+
+/* ──────────────────────────────────────────────
+   KEYFRAME ANIMATIONS
+   ────────────────────────────────────────────── */
+
+/* Fade entrances */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Scale up (for cards) */
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Floating bob (for social icons) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* Pulse glow (for WhatsApp button) */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  50%      { box-shadow: 0 0 20px 8px rgba(37, 211, 102, 0.25); }
+}
+
+/* Slide in from right (social sidebar) */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Shimmer sweep (gold effect for buttons) */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Underline slide (nav links) */
+@keyframes underlineSlide {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Breathing pulse for backdrop circle */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+
+/* Counter pop */
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.5); }
+  70%  { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Gentle rotate for decorative elements */
+@keyframes gentleSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobile menu slide down */
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 100vh; }
+}
+
+/* Dropdown scale in */
+@keyframes dropdownIn {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Continuous Marquee Animation */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ──────────────────────────────────────────────
+   ANIMATION UTILITY CLASSES
+   ────────────────────────────────────────────── */
+
+.animate-fade-in-up    { animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in-down  { animation: fadeInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in-left  { animation: fadeInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in-right { animation: fadeInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in       { animation: fadeIn 0.7s ease both; }
+.animate-scale-up      { animation: scaleUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-float         { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow    { animation: pulseGlow 2s ease-in-out infinite; }
+.animate-slide-in-right{ animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-shimmer       { animation: shimmer 2.5s linear infinite; }
+.animate-breathe       { animation: breathe 4s ease-in-out infinite; }
+.animate-pop-in        { animation: popIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-dropdown-in   { animation: dropdownIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slide-down    { animation: slideDown 0.35s ease both; }
+.animate-marquee       { display: flex; width: max-content; animation: marquee 35s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* Stagger delay classes */
+.delay-0   { animation-delay: 0ms; }
+.delay-75  { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-900 { animation-delay: 900ms; }
+.delay-1000{ animation-delay: 1000ms; }
+
+/* ──────────────────────────────────────────────
+   SCROLL-REVEAL SYSTEM
+   Elements with .scroll-reveal start invisible and
+   animate in when .is-visible is added by the hook.
+   ────────────────────────────────────────────── */
+
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+}
+
+/* Direction variants — applied alongside .scroll-reveal */
+.scroll-reveal.reveal-up {
+  transform: translateY(40px);
+}
+.scroll-reveal.reveal-up.is-visible {
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.scroll-reveal.reveal-down {
+  transform: translateY(-40px);
+}
+.scroll-reveal.reveal-down.is-visible {
+  animation: fadeInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.scroll-reveal.reveal-left {
+  transform: translateX(-40px);
+}
+.scroll-reveal.reveal-left.is-visible {
+  animation: fadeInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.scroll-reveal.reveal-right {
+  transform: translateX(40px);
+}
+.scroll-reveal.reveal-right.is-visible {
+  animation: fadeInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.scroll-reveal.reveal-scale {
+  transform: scale(0.85);
+}
+.scroll-reveal.reveal-scale.is-visible {
+  animation: scaleUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ──────────────────────────────────────────────
+   NAVBAR TRANSITION HELPERS
+   ────────────────────────────────────────────── */
+
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #C6992F, #e0ae2a);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  transform: scaleX(1);
+}
+
+/* Glassmorphism navbar */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(18, 41, 79, 0.08);
+  box-shadow: 0 1px 20px -6px rgba(18, 41, 79, 0.1);
+}
+.navbar-transparent {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* ──────────────────────────────────────────────
+   FLOATING SOCIAL TOOLTIP
+   ────────────────────────────────────────────── */
+.social-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #12294F;
+  color: #F8F4EC;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.social-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #12294F;
+}
+.social-icon-wrap:hover .social-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}

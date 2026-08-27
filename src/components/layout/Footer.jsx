@@ -19,6 +19,7 @@ const COL = [
       { to: '/spiritual-tourism', label: 'Spiritual Tourism' },
       { to: '/packages',          label: 'Tour Packages' },
       { to: '/experiences',       label: 'Experiences' },
+      { to: '/gallery',           label: 'Photo Gallery' },
       { to: '/blog',              label: 'Blog' },
     ],
   },

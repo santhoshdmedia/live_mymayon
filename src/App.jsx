@@ -4,6 +4,7 @@ import Loader from './components/Loader';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import FloatingSocial from './components/layout/FloatingSocial';
 import { Spinner } from './components/ui/States';
 import LaunchCountdown from './components/Launchcountdownpreview';
 
@@ -20,6 +21,7 @@ const SpiritualTourism= lazy(() => import('./pages/SpiritualTourism'));
 const Packages        = lazy(() => import('./pages/Packages'));
 const PackageDetail   = lazy(() => import('./pages/PackageDetail'));
 const Experiences     = lazy(() => import('./pages/Experiences'));
+const Gallery         = lazy(() => import('./pages/Gallery'));
 const PlanMyTrip      = lazy(() => import('./pages/PlanMyTrip'));
 const Blog            = lazy(() => import('./pages/Blog'));
 const Partner         = lazy(() => import('./pages/Partner'));
@@ -61,6 +63,7 @@ function getTimeLeft(target) {
               <Route path="/packages"                           element={<Packages />} />
               <Route path="/packages/:slug"                     element={<PackageDetail />} />
               <Route path="/experiences"                        element={<Experiences />} />
+              <Route path="/gallery"                            element={<Gallery />} />
               <Route path="/plan-my-trip"                       element={<PlanMyTrip />} />
               <Route path="/blog"                               element={<Blog />} />
               <Route path="/partner"                            element={<Partner />} />
@@ -68,6 +71,7 @@ function getTimeLeft(target) {
             </Routes>
           </Suspense>
           <Footer />
+          <FloatingSocial />
         </BrowserRouter>
       </div>
     </>

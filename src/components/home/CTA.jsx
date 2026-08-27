@@ -3,6 +3,7 @@ import { ChevronRight, Phone } from 'lucide-react';
 import { TriangleWatermark } from '../ui/Ornament';
 import StatCard from '../ui/StatCard';
 import Button from '../ui/Button';
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 const STATS = [
   { number: '38',   label: 'Districts Covered' },
@@ -12,15 +13,25 @@ const STATS = [
 ];
 
 export default function CTA() {
+  const ref = useScrollReveal();
+
   return (
-    <section className="relative py-16 lg:py-24 bg-navy-radial text-cream overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-navy-radial text-cream overflow-hidden" ref={ref}>
       <TriangleWatermark className="absolute -bottom-24 -left-24 w-[420px] h-[420px] opacity-10" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="grid grid-cols-2 gap-6">
-            {STATS.map((s) => <StatCard key={s.label} number={s.number} label={s.label} />)}
+            {STATS.map((s, i) => (
+              <div
+                key={s.label}
+                className="scroll-reveal reveal-scale"
+                style={{ animationDelay: `${i * 150}ms` }}
+              >
+                <StatCard number={s.number} label={s.label} />
+              </div>
+            ))}
           </div>
-          <div>
+          <div className="scroll-reveal reveal-right" style={{ animationDelay: '200ms' }}>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               Tell Us Where Your Heart Wants to Go
             </h2>
