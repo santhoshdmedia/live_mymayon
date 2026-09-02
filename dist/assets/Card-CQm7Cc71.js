@@ -1,1 +1,0 @@
-import{j as r}from"./index-BIQZw-1M.js";function e({children:e,hover:a=!0,className:o=""}){return r.jsx("div",{className:`bg-white rounded-2xl border border-navy-100 shadow-md p-6 ${a?"hover:shadow-xl hover:-translate-y-1 transition-all duration-300":""} ${o}`,children:e})}export{e as C};

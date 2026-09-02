@@ -1,1 +1,0 @@
-import{r as t}from"./index-BIQZw-1M.js";function e(e,a=[]){const[s,n]=t.useState(null),[l,r]=t.useState(!0),[u,c]=t.useState(null),o=t.useCallback(async()=>{r(!0),c(null);try{const t=await e();n(t)}catch(t){c(t.message)}finally{r(!1)}},a);return t.useEffect(()=>{o()},[o]),{data:s,loading:l,error:u,refetch:o}}export{e as u};

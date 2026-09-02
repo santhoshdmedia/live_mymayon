@@ -1,1 +1,0 @@
-import{j as e}from"./index-BIQZw-1M.js";function s({children:s,className:n=""}){return e.jsxs("span",{className:`inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 ${n}`,children:[e.jsx("span",{className:"w-5 h-[2px] bg-gold-500 rounded-full"}),s]})}export{s as B};

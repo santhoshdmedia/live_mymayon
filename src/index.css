@@ -49,46 +49,63 @@
   to   { opacity: 1; }
 }
 
-/* Scale up (for cards) */
+/* Scale & Zoom */
 @keyframes scaleUp {
   from { opacity: 0; transform: scale(0.85); }
   to   { opacity: 1; transform: scale(1); }
 }
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
 
-/* Floating bob (for social icons) */
+/* Floating bob */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-6px); }
 }
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(2deg); }
+}
 
-/* Pulse glow (for WhatsApp button) */
+/* Pulse glow */
 @keyframes pulseGlow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
   50%      { box-shadow: 0 0 20px 8px rgba(37, 211, 102, 0.25); }
 }
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 15px 2px rgba(198, 153, 47, 0.2); }
+  50%      { box-shadow: 0 0 30px 8px rgba(198, 153, 47, 0.5); }
+}
 
-/* Slide in from right (social sidebar) */
+/* Slide in from right */
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(60px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* Shimmer sweep (gold effect for buttons) */
+/* Shimmer sweep */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
+@keyframes textShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-/* Underline slide (nav links) */
+/* Underline slide */
 @keyframes underlineSlide {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
 
-/* Breathing pulse for backdrop circle */
+/* Breathing pulse */
 @keyframes breathe {
   0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.03); }
+  50%      { transform: scale(1.04); }
 }
 
 /* Counter pop */
@@ -98,10 +115,21 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Gentle rotate for decorative elements */
+/* Gentle rotate */
 @keyframes gentleSpin {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+@keyframes slowSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulse ring effect */
+@keyframes pulseRing {
+  0%   { transform: scale(0.95); opacity: 0.8; }
+  50%  { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
 }
 
 /* Mobile menu slide down */
@@ -132,14 +160,20 @@
 .animate-fade-in-right { animation: fadeInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-fade-in       { animation: fadeIn 0.7s ease both; }
 .animate-scale-up      { animation: scaleUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-zoom-in       { animation: zoomIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-float         { animation: float 3s ease-in-out infinite; }
+.animate-float-slow    { animation: floatSlow 6s ease-in-out infinite; }
 .animate-pulse-glow    { animation: pulseGlow 2s ease-in-out infinite; }
+.animate-gold-glow     { animation: goldGlow 3s ease-in-out infinite; }
 .animate-slide-in-right{ animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-shimmer       { animation: shimmer 2.5s linear infinite; }
+.animate-text-shimmer  { background-size: 200% 200%; animation: textShimmer 4s ease infinite; }
 .animate-breathe       { animation: breathe 4s ease-in-out infinite; }
 .animate-pop-in        { animation: popIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-dropdown-in   { animation: dropdownIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-slide-down    { animation: slideDown 0.35s ease both; }
+.animate-slow-spin     { animation: slowSpin 40s linear infinite; }
+.animate-pulse-ring    { animation: pulseRing 3s ease-out infinite; }
 .animate-marquee       { display: flex; width: max-content; animation: marquee 35s linear infinite; }
 .animate-marquee:hover { animation-play-state: paused; }
 
