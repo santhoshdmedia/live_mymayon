@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Loader from './components/Loader';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/layout/Header';
@@ -51,7 +51,8 @@ function getTimeLeft(target) {
           <Suspense fallback={<Spinner className="min-h-[60vh]" />}>
             <Routes>
               <Route path="/"                                    element={<Home />} />
-              <Route path="/about"                              element={<About />} />
+              <Route path="/about-us"                           element={<About />} />
+              <Route path="/about"                              element={<Navigate to="/about-us" replace />} />
               <Route path="/destinations"                       element={<Destinations />} />
               <Route path="/destinations/tamil-nadu"            element={<TamilNadu />} />
               <Route path="/destinations/india"                 element={<India />} />

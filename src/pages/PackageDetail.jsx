@@ -278,7 +278,7 @@ export default function PackageDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card hover={false} className="sticky top-24 !p-0 overflow-hidden">
+            <Card hover={false} className="lg:sticky lg:top-24 !p-0 overflow-hidden shadow-lg border-navy-100">
               <div className="bg-navy-900 px-6 py-5">
                 <span className="text-xs text-gold-300/80 uppercase tracking-wide">Starting from</span>
                 <p className="text-4xl font-bold text-white mt-1">{formatPrice(p.priceFrom, p.currency)}</p>
@@ -310,8 +310,18 @@ export default function PackageDetail() {
               </div>
             </Card>
 
-
-            <EnquiryForm packageSlug={p.slug} packageTitle={p.title} compact />
+            <div className="bg-white rounded-2xl border border-navy-100 p-5 sm:p-6 shadow-md [transform:translateZ(0)]">
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-navy-100">
+                <span className="w-9 h-9 rounded-xl bg-gold-500/15 border border-gold-400/30 flex items-center justify-center text-gold-600 font-bold">
+                  ✉️
+                </span>
+                <div>
+                  <h3 className="font-bold text-navy-800 text-base">Quick Package Enquiry</h3>
+                  <p className="text-xs text-navy-400">Response within 24 hours · No obligation</p>
+                </div>
+              </div>
+              <EnquiryForm packageSlug={p.slug} packageTitle={p.title} compact />
+            </div>
           </div>
         </div>
       </div>

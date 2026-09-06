@@ -14,6 +14,7 @@ const DEST_LINKS = [
 
 const NAV = [
   { label: 'Destinations', children: DEST_LINKS },
+  { to: '/about-us',          label: 'About Us' },
   { to: '/spiritual-tourism', label: 'Spiritual Tourism' },
   { to: '/packages',          label: 'Tour Packages' },
   { to: '/experiences',       label: 'Experiences' },
@@ -143,19 +144,19 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav links */}
-          <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center">
             {NAV.map((link) =>
               link.children ? (
                 <div
                   key="dest"
-                  className="relative px-3 py-2"
+                  className="relative px-2 xl:px-3 py-2"
                   onMouseEnter={handleMouseEnterDest}
                   onMouseLeave={handleMouseLeaveDest}
                 >
                   <button
                     type="button"
                     onClick={() => setDest((d) => !d)}
-                    className="nav-link-underline flex items-center gap-1.5 text-sm font-medium text-white hover:text-gold-300 transition-colors cursor-pointer"
+                    className="nav-link-underline flex items-center gap-1 text-xs xl:text-sm font-medium text-white hover:text-gold-300 transition-colors cursor-pointer whitespace-nowrap"
                   >
                     <span>{link.label}</span>
                     <ChevronDown className={`w-3.5 h-3.5 text-gold-400 transition-transform duration-300 ${dest ? 'rotate-180 text-gold-300' : ''}`} />
@@ -174,7 +175,7 @@ export default function Header() {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `nav-link-underline px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                    `nav-link-underline px-2 xl:px-3 py-2 text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                       isActive
                         ? 'text-gold-300 font-semibold active'
                         : 'text-white hover:text-gold-300'

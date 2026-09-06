@@ -40,8 +40,8 @@ export default function EnquiryForm({ packageSlug, packageTitle, destinationName
     );
   }
 
-  const inputCls = 'w-full px-3.5 py-2.5 border border-navy-200 rounded-xl text-sm bg-white focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-300 transition placeholder:text-navy-300';
-  const labelCls = 'block text-xs font-semibold text-navy-600 uppercase tracking-wide mb-1';
+  const inputCls = 'w-full px-3.5 py-2.5 border border-navy-200 rounded-xl text-base sm:text-sm bg-white text-navy-800 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-400/20 transition-colors duration-150 placeholder:text-navy-300 touch-manipulation [transform:translateZ(0)]';
+  const labelCls = 'block text-xs font-semibold text-navy-600 uppercase tracking-wide mb-1 select-none';
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">

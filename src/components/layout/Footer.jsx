@@ -26,7 +26,7 @@ const COL = [
   {
     heading: 'Company',
     links: [
-      { to: '/about',   label: 'About Us' },
+      { to: '/about-us',label: 'About Us' },
       { to: '/partner', label: 'Partner With Us' },
       { to: '/contact', label: 'Contact' },
       { to: '/plan-my-trip', label: 'Plan My Trip' },
