@@ -6,6 +6,7 @@ import { TriangleWatermark } from '../../components/ui/Ornament';
 import { useFetch } from '../../hooks/useFetch';
 import { fetchDistricts } from '../../api';
 import { Spinner, ErrorBlock, EmptyBlock } from '../../components/ui/States';
+import PackageCoverCard from '../../components/ui/PackageCoverCard';
 
 const REGIONS = ['All', 'Northern', 'Western', 'Central', 'Southern', 'Delta'];
 const COLORS  = ['#1e2a46','#2c3a5c','#74522a','#883c53','#93692f','#1a4a3c'];
@@ -66,31 +67,14 @@ export default function DistrictExplorer() {
           {error   && <ErrorBlock message={error} onRetry={refetch} />}
           {!loading && !error && districts.length === 0 && <EmptyBlock message="No districts match your filters." />}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {districts.map((d, i) => (
-              <Link key={d._id} to={`/districts/${d.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden border border-navy-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                <div className="h-40 relative" style={{ background: COLORS[i % COLORS.length] }}>
-                  {d.heroImage
-                    ? <img src={d.heroImage} alt={d.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                    : <div className="w-full h-full flex items-center justify-center">
-                        <span className="font-display text-5xl text-white/15 font-bold">{d.name[0]}</span>
-                      </div>
-                  }
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent" />
-                  <span className="absolute top-3 right-3 bg-gold-500 text-navy-900 text-xs font-bold px-2 py-1 rounded-full">{d.region}</span>
-                </div>
-                <div className="p-4 flex-1 flex flex-col">
-                  <div className="flex items-start justify-between mb-1">
-                    <h3 className="font-bold text-navy-800">{d.name}</h3>
-                    {d.tamilName && <span className="text-gold-500 text-sm font-accent italic">{d.tamilName}</span>}
-                  </div>
-                  <p className="text-xs text-navy-500 mb-2 flex-1">{d.presidingDeity}</p>
-                  <div className="flex items-center justify-between text-xs text-navy-400">
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{d.templeCount} temples</span>
-                    {d.idealSeason && <span>{d.idealSeason}</span>}
-                  </div>
-                </div>
-              </Link>
+            {districts.map((d) => (
+              <PackageCoverCard
+                key={d._id}
+                item={d}
+                to={`/districts/${d.slug}`}
+                title={d.name}
+                tags={`${d.region} | ${d.templeCount || 0} Temples | ${d.idealSeason || 'Year-round'}`}
+              />
             ))}
           </div>
           {!loading && !error && (

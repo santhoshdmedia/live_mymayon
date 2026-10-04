@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, ArrowRight, Image as ImageIcon } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, ArrowRight, Search, Image as ImageIcon } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa';
 import logo from '../../assets/logo.png';
 import SecondaryNav from './SecondaryNav';
@@ -13,14 +13,11 @@ const DEST_LINKS = [
 ];
 
 const NAV = [
+  { to: '/',                  label: 'Home' },
   { label: 'Destinations', children: DEST_LINKS },
-  { to: '/about-us',          label: 'About Us' },
-  { to: '/spiritual-tourism', label: 'Spiritual Tourism' },
-  { to: '/packages',          label: 'Tour Packages' },
   { to: '/experiences',       label: 'Experiences' },
-  { to: '/gallery',           label: 'Gallery' },
+  { to: '/about-us',          label: 'About Us' },
   { to: '/blog',              label: 'Blog' },
-  { to: '/partner',           label: 'Partner With Us' },
   { to: '/contact',           label: 'Contact' },
 ];
 
@@ -135,28 +132,28 @@ export default function Header() {
               />
               <div className="absolute inset-0 rounded-full bg-gold-400/0 group-hover:bg-gold-400/10 transition-colors duration-300" />
             </div>
-            <span className="font-display font-bold text-lg text-white leading-none tracking-tight">
-              My Mayon
-              <span className="block font-accent italic text-xs text-gold-300 font-normal tracking-wider mt-0.5">
-                Curated Memories
+            <span className="font-display font-bold text-lg text-white leading-none tracking-wider uppercase">
+              MYMAYON
+              <span className="block font-sans text-[9px] text-gold-300 font-semibold tracking-[0.16em] uppercase mt-0.5">
+                TAMIL NADU TOURISM & TRAVEL
               </span>
             </span>
           </Link>
 
           {/* Desktop nav links */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center">
             {NAV.map((link) =>
               link.children ? (
                 <div
                   key="dest"
-                  className="relative px-2 xl:px-3 py-2"
+                  className="relative px-3 py-2"
                   onMouseEnter={handleMouseEnterDest}
                   onMouseLeave={handleMouseLeaveDest}
                 >
                   <button
                     type="button"
                     onClick={() => setDest((d) => !d)}
-                    className="nav-link-underline flex items-center gap-1 text-xs xl:text-sm font-medium text-white hover:text-gold-300 transition-colors cursor-pointer whitespace-nowrap"
+                    className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-gold-300 transition-colors cursor-pointer whitespace-nowrap"
                   >
                     <span>{link.label}</span>
                     <ChevronDown className={`w-3.5 h-3.5 text-gold-400 transition-transform duration-300 ${dest ? 'rotate-180 text-gold-300' : ''}`} />
@@ -174,11 +171,12 @@ export default function Header() {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  end={link.to === '/'}
                   className={({ isActive }) =>
-                    `nav-link-underline px-2 xl:px-3 py-2 text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                    `relative px-3 py-2 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                       isActive
-                        ? 'text-gold-300 font-semibold active'
-                        : 'text-white hover:text-gold-300'
+                        ? 'text-gold-300 font-semibold after:content-[""] after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-gold-400'
+                        : 'text-white/90 hover:text-gold-300'
                     }`
                   }
                 >
@@ -188,15 +186,19 @@ export default function Header() {
             )}
           </nav>
 
-          {/* CTA Button */}
+          {/* Search Icon & CTA Button */}
           <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+            <Link
+              to="/packages"
+              className="text-white/80 hover:text-gold-300 transition-colors p-1.5"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5 text-white/90 hover:text-gold-300" />
+            </Link>
             <Link to="/plan-my-trip">
-              <button className="relative overflow-hidden px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-navy-950 shadow-gold hover:shadow-xl hover:shadow-gold-500/25 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-navy-900 cursor-pointer">
-                <span className="relative z-10 font-bold tracking-wide">Plan My Trip</span>
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"
-                  style={{ backgroundSize: '200% 100%' }}
-                />
+              <button className="px-5 py-2.5 rounded-full text-sm font-bold bg-[#d4a853] hover:bg-[#e4b85c] text-navy-950 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer flex items-center gap-1.5">
+                <span>Plan Your Trip</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
             </Link>
           </div>

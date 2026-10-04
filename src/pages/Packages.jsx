@@ -8,6 +8,7 @@ import { useFetch } from '../hooks/useFetch';
 import { fetchPackages } from '../api';
 import { Spinner, ErrorBlock, EmptyBlock } from '../components/ui/States';
 import useScrollReveal from '../hooks/useScrollReveal';
+import PackageCoverCard from '../components/ui/PackageCoverCard';
 
 const CATEGORIES = ['All','Spiritual','Heritage','Nature','Adventure','Honeymoon','Family','Food & Culture','International'];
 
@@ -68,41 +69,17 @@ export default function Packages() {
           {!loading && !error && pkgs.length === 0 && <EmptyBlock message="No packages match your filters." />}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {pkgs.map((p, i) => (
-              <Link key={p._id} to={`/packages/${p.slug}`}
-                className="scroll-reveal reveal-up group bg-white rounded-2xl overflow-hidden border border-navy-100 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col"
-                style={{ animationDelay: `${i * 100}ms` }}>
-                <div className="h-48 relative bg-navy-800 overflow-hidden">
-                  {p.heroImage
-                    ? <img src={p.heroImage} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
-                    : <div className="w-full h-full bg-navy-radial flex items-center justify-center">
-                        <span className="text-white/10 font-display font-bold text-5xl">{p.title[0]}</span>
-                      </div>
-                  }
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent" />
-                  <span className="absolute top-3 left-3 bg-gold-500 text-navy-900 text-xs font-bold px-2 py-1 rounded-full">{p.category}</span>
-                  <span className="absolute top-3 right-3 flex items-center gap-1 bg-white/90 text-navy-800 text-xs font-bold px-2 py-1 rounded-full">
-                    <Star className="w-3 h-3 fill-gold-500 text-gold-500" /> {p.rating || '4.8'}
-                  </span>
-                </div>
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="font-bold text-navy-800 text-base leading-snug mb-1">{p.title}</h3>
-                  <div className="flex items-center gap-4 text-xs text-navy-500 mb-3">
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{p.locationLabel}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{p.durationDays} days</span>
-                  </div>
-                  <p className="text-xs text-navy-500 leading-relaxed flex-1 line-clamp-2">{p.description}</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-navy-100">
-                    <div>
-                      <span className="text-xs text-navy-400">From</span>
-                      <p className="font-bold text-navy-800 text-lg leading-none">₹{p.priceFrom?.toLocaleString('en-IN')}</p>
-                      <span className="text-xs text-navy-400">per person</span>
-                    </div>
-                    <span className="flex items-center gap-1 text-gold-600 text-sm font-semibold group-hover:gap-2 transition-all">
-                      View <ChevronRight className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
+              <div
+                key={p._id}
+                className="scroll-reveal reveal-up"
+                style={{ animationDelay: `${(i % 6) * 80}ms` }}
+              >
+                <PackageCoverCard
+                  item={p}
+                  title={p.title}
+                  tags={`${p.locationLabel} | ${p.durationDays} Days | ₹${p.priceFrom?.toLocaleString('en-IN')}`}
+                />
+              </div>
             ))}
           </div>
           {!loading && !error && pkgs.length > 0 && (
