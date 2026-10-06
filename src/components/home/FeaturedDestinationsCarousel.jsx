@@ -127,24 +127,25 @@ export default function FeaturedDestinationsCarousel() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-6 h-[2px] bg-[#c59a27]" />
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#c59a27]">
+              <span className="w-6 h-[2px] bg-[#d4a359]" />
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#d4a359]">
                 FEATURED DESTINATIONS
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0f3d2a] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0e3b2b] tracking-tight">
               Discover Tamil Nadu's Hidden Gems
             </h2>
           </div>
 
           <Link
             to="/destinations/district-explorer"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#165b3d] hover:text-[#0f3d2a] group self-start sm:self-auto transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#165b3d] hover:text-[#0e3b2b] group self-start sm:self-auto transition-colors"
           >
             <span>View All Destinations</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
+
 
         {/* Carousel Container with side navigation buttons */}
         <div className="relative group/carousel">
@@ -218,11 +219,12 @@ export default function FeaturedDestinationsCarousel() {
                     </div>
 
                     {/* Right: Golden circular arrow button */}
-                    <div className="w-7 h-7 rounded-full bg-[#d4a853] group-hover:bg-[#e4b85c] flex items-center justify-center text-navy-950 font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0 shadow-sm">
-                      <ChevronRight className="w-4 h-4 text-navy-950 stroke-[3]" />
+                    <div className="w-7 h-7 rounded-full bg-[#d4a359] group-hover:bg-[#e2b46c] flex items-center justify-center text-[#071f43] font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0 shadow-sm">
+                      <ChevronRight className="w-4 h-4 text-[#071f43] stroke-[3]" />
                     </div>
                   </div>
                 </Link>
+
               );
             })}
           </div>

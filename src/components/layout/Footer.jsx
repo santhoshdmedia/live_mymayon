@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
+import logoEmblem from '../../assets/logo-emblem.png';
 import logo from '../../assets/logo.png';
 import { Divider } from '../ui/Ornament';
 
@@ -36,15 +37,19 @@ const COL = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-900 text-navy-200 border-t border-gold-400/20">
+    <footer className="bg-[#071f43] text-navy-200 border-t border-gold-400/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="My Mayon" className="w-10 h-10 rounded-full ring-1 ring-gold-400/50 object-cover" />
-              <span className="font-display font-bold text-cream text-lg">My Mayon</span>
+            <Link to="/" className="flex items-center gap-3.5 mb-4 group">
+              <img src={logoEmblem} alt="My Mayon" className="h-12 w-auto object-contain transition-transform group-hover:scale-105" />
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-white text-xl uppercase tracking-[0.06em]">MYMAYON</span>
+                <span className="font-sans text-[8.5px] text-gold-400 font-semibold tracking-[0.18em] uppercase">Tamil Nadu Tourism & Travel</span>
+              </div>
             </Link>
+
             <p className="text-sm leading-relaxed mb-5 max-w-xs">
               Memorable journeys, curated memories — your trusted partner for spiritual circuits and cultural escapes across Tamil Nadu.
             </p>

@@ -5,29 +5,45 @@ export default {
     extend: {
       colors: {
         navy: {
-          50:  '#eef1f8', 100: '#d8dff0', 200: '#b2bfe1', 300: '#8599cf',
-          400: '#5d73bc', 500: '#3d54a5', 600: '#2c3f8a', 700: '#1e2d6b',
-          800: '#12294F', 900: '#0a1a30', 950: '#060f1e',
+          50:  '#f0f5fc',
+          100: '#e0ecfb',
+          200: '#bed3f4',
+          300: '#83ace8',
+          400: '#4b82d9',
+          500: '#2260be',
+          600: '#174a96',
+          700: '#0f3775',
+          800: '#0a2959',
+          900: '#071f43', // Royal Temple Navy from logo and Image 2 header
+          950: '#04132b', // Deep midnight navy
         },
         gold: {
-          50:  '#fdf9ee', 100: '#f9eecc', 200: '#f2db96', 300: '#e9c45a',
-          400: '#e0ae2a', 500: '#C6992F', 600: '#a67a1c', 700: '#855e13',
-          800: '#64470e', 900: '#44300a',
+          50:  '#fdfbf7',
+          100: '#faf2df',
+          200: '#f4e3be',
+          300: '#ebd094',
+          400: '#dfbb66',
+          500: '#d4a359', // Rich Temple Gold from logo gopuram, lotus, and CTA buttons
+          600: '#bc8a38',
+          700: '#986c24',
+          800: '#77531d',
+          900: '#553a15',
+          950: '#332109',
         },
-        cream: '#F8F4EC',
         forest: {
-          50: '#f2f8f5',
-          100: '#e1efe8',
-          200: '#c5dfd3',
-          300: '#9bc6b5',
-          400: '#6ea892',
-          500: '#468971',
-          600: '#346f5b',
-          700: '#285849',
-          800: '#1c4236',
-          900: '#14352b',
-          950: '#0b201a',
+          50:  '#f0f7f3',
+          100: '#deede4',
+          200: '#beddcb',
+          300: '#95c5ac',
+          400: '#66a788',
+          500: '#3f8967',
+          600: '#2a6e4f',
+          700: '#1c573d',
+          800: '#165b3d', // Temple Forest Green from Image 2 trust badges and eyebrow
+          900: '#0e3b2b', // Deep Heritage Green from Image 2 headings
+          950: '#08241a',
         },
+        cream: '#faf8f4',
       },
       fontFamily: {
         sans:    ['Inter','system-ui','sans-serif'],
@@ -36,12 +52,13 @@ export default {
         script:  ['Caveat','cursive'],
       },
       backgroundImage: {
-        'navy-radial': 'radial-gradient(ellipse at 30% 40%, #1e2d6b 0%, #12294F 55%, #0a1a30 100%)',
+        'navy-radial': 'radial-gradient(ellipse at 30% 40%, #0f3775 0%, #071f43 55%, #04132b 100%)',
       },
       boxShadow: {
-        'gold': '0 4px 20px -4px rgba(198,153,47,0.35)',
+        'gold': '0 4px 20px -4px rgba(212,163,89,0.38)',
       },
     },
   },
   plugins: [],
 };
+

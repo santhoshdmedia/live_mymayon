@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Mail, ArrowRight, Search, Image as ImageIcon } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa';
+import logoEmblem from '../../assets/logo-emblem.png';
 import logo from '../../assets/logo.png';
 import SecondaryNav from './SecondaryNav';
 
@@ -29,7 +30,7 @@ const DropMenu = ({ links, onClose, onMouseEnter, onMouseLeave }) => (
   >
     {/* Invisible hover bridge ensuring mouse doesn't lose hover across gaps */}
     <div className="absolute -top-3 left-0 right-0 h-5 bg-transparent" />
-    <div className="animate-dropdown-in bg-[#0a1a30] border border-gold-400/30 rounded-2xl shadow-2xl shadow-navy-950/80 py-2.5 overflow-hidden">
+    <div className="animate-dropdown-in bg-[#071f43] border border-gold-400/30 rounded-2xl shadow-2xl shadow-navy-950/80 py-2.5 overflow-hidden">
       {links.map((l) => (
         <NavLink
           key={l.to}
@@ -113,28 +114,25 @@ export default function Header() {
 
       {/* Main Luxury Navigation Bar */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ease-out bg-[#0a1a30] border-b border-gold-400/20 shadow-xl shadow-navy-950/20 ${
-          scrolled ? 'py-2.5 shadow-2xl shadow-navy-950/40 bg-[#060f1e]' : 'py-3'
+        className={`sticky top-0 z-50 transition-all duration-300 ease-out bg-[#071f43] border-b border-gold-400/20 shadow-xl shadow-navy-950/20 ${
+          scrolled ? 'py-2.5 shadow-2xl shadow-navy-950/40 bg-[#04132b]' : 'py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 flex-shrink-0 group"
+            className="flex items-center gap-3.5 flex-shrink-0 group"
             onClick={() => setMob(false)}
           >
-            <div className="relative">
-              <img
-                src={logo}
-                alt="My Mayon"
-                className="w-10 h-10 rounded-full ring-2 ring-gold-400/60 group-hover:ring-gold-400 object-cover transition-all duration-300 group-hover:scale-105 shadow-md shadow-gold-500/20"
-              />
-              <div className="absolute inset-0 rounded-full bg-gold-400/0 group-hover:bg-gold-400/10 transition-colors duration-300" />
-            </div>
-            <span className="font-display font-bold text-lg text-white leading-none tracking-wider uppercase">
+            <img
+              src={logoEmblem}
+              alt="My Mayon Logo"
+              className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_10px_rgba(212,163,89,0.25)]"
+            />
+            <span className="font-display font-bold text-xl sm:text-2xl text-white leading-none tracking-[0.06em] uppercase">
               MYMAYON
-              <span className="block font-sans text-[9px] text-gold-300 font-semibold tracking-[0.16em] uppercase mt-0.5">
+              <span className="block font-sans text-[8.5px] sm:text-[9.5px] text-gold-400 font-semibold tracking-[0.2em] uppercase mt-1">
                 TAMIL NADU TOURISM & TRAVEL
               </span>
             </span>
@@ -175,7 +173,7 @@ export default function Header() {
                   className={({ isActive }) =>
                     `relative px-3 py-2 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                       isActive
-                        ? 'text-gold-300 font-semibold after:content-[""] after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-gold-400'
+                        ? 'text-gold-300 font-semibold after:content-[""] after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-[#d4a359]'
                         : 'text-white/90 hover:text-gold-300'
                     }`
                   }
@@ -196,7 +194,7 @@ export default function Header() {
               <Search className="w-5 h-5 text-white/90 hover:text-gold-300" />
             </Link>
             <Link to="/plan-my-trip">
-              <button className="px-5 py-2.5 rounded-full text-sm font-bold bg-[#d4a853] hover:bg-[#e4b85c] text-navy-950 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer flex items-center gap-1.5">
+              <button className="px-5 py-2.5 rounded-full text-sm font-bold bg-[#d4a359] hover:bg-[#e2b46c] text-[#071f43] shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer flex items-center gap-1.5 font-sans">
                 <span>Plan Your Trip</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
@@ -216,19 +214,19 @@ export default function Header() {
 
       {/* Full-Screen Mobile Menu Overlay */}
       {mob && (
-        <div className="fixed inset-0 z-[100] bg-[#071426] text-cream flex flex-col justify-between p-6 sm:p-8 animate-fade-in overflow-y-auto">
+        <div className="fixed inset-0 z-[100] bg-[#071f43] text-cream flex flex-col justify-between p-6 sm:p-8 animate-fade-in overflow-y-auto">
           {/* Top Bar inside overlay */}
           <div className="flex items-center justify-between border-b border-gold-400/20 pb-4">
             <Link to="/" onClick={() => setMob(false)} className="flex items-center gap-3">
               <img
-                src={logo}
-                alt="My Mayon"
-                className="w-10 h-10 rounded-full ring-2 ring-gold-400/60 object-cover"
+                src={logoEmblem}
+                alt="My Mayon Logo"
+                className="h-10 w-auto object-contain"
               />
-              <span className="font-display font-bold text-xl text-white">
-                My Mayon
-                <span className="block font-accent italic text-xs text-gold-300 font-normal">
-                  Curated Memories
+              <span className="font-display font-bold text-xl text-white tracking-wide uppercase">
+                MYMAYON
+                <span className="block font-sans text-[8.5px] text-gold-400 font-semibold tracking-[0.18em] uppercase mt-0.5">
+                  Tamil Nadu Tourism & Travel
                 </span>
               </span>
             </Link>
@@ -240,6 +238,7 @@ export default function Header() {
               <X className="w-6 h-6" />
             </button>
           </div>
+
 
           {/* Main Nav Links in large aesthetic typography */}
           <div className="py-8 flex flex-col gap-4 max-w-md w-full mx-auto">

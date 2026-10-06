@@ -138,11 +138,12 @@ export default function Hero() {
                 {/* 4. Search Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#0d2a45] hover:bg-[#071d31] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg flex-shrink-0 cursor-pointer"
+                  className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#071f43] hover:bg-[#0a2959] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg flex-shrink-0 cursor-pointer"
                 >
                   <Search className="w-4 h-4 stroke-[2.5]" />
                   <span>Search</span>
                 </button>
+
               </form>
             </div>
           </div>

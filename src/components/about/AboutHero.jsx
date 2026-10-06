@@ -59,10 +59,11 @@ const AboutHero = () => {
 
           <div className="relative flex justify-center">
             <FramedMedia className="w-72 h-72 md:w-96 md:h-96">
-              <div className="w-full h-full rounded-full bg-navy-radial ring-4 ring-gold-400/20 shadow-2xl flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="My Mayon crest" className="w-2/3 opacity-90" />
+              <div className="w-full h-full rounded-3xl bg-[#071f43] ring-4 ring-gold-400/25 shadow-2xl flex items-center justify-center overflow-hidden p-4">
+                <img src={logo} alt="My Mayon crest" className="w-full h-full object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]" />
               </div>
             </FramedMedia>
+
             <div className="absolute top-2 right-2 md:top-6 md:right-4 w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center shadow-lg">
               <Compass className="w-8 h-8 text-navy-900" />
             </div>
