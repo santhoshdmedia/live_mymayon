@@ -13,6 +13,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import EnquiryForm from '../components/EnquiryForm';
 import GallerySlideshow from '../components/ui/GallerySlideshow';
+import { getCoverImage } from '../utils/imageResolver';
 
 // Map currency codes to both a display symbol and the locale that formats
 // their thousands/decimal separators correctly. Using a single hardcoded
@@ -77,12 +78,12 @@ export default function PackageDetail() {
 
   return (
     <div className="bg-cream">
-      {/* ── Hero — always the single hero_image, never part of the slideshow ── */}
+      {/* ── Hero — uses the uploaded hero image or resolved cover image ── */}
       <section className="relative h-[26rem] sm:h-[32rem] bg-navy-800 overflow-hidden">
-        {p.heroImage
+        {getCoverImage(p)
           ? (
             <img
-              src={p.heroImage}
+              src={getCoverImage(p)}
               alt={p.title}
               className="w-full h-full object-cover"
               loading="eager"

@@ -51,16 +51,30 @@ const CATEGORY_IMAGE_MAP = {
   Coastal: '/images/rameswaram.jpg',
 };
 
+function resolveMediaUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+  if (!trimmed) return '';
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+  const base = import.meta.env.VITE_API_URL
+    ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '')
+    : 'https://api.mymayon.com';
+  if (trimmed.startsWith('/uploads/')) {
+    return `${base}${trimmed}`;
+  }
+  return trimmed;
+}
+
 export function getCoverImage(item = {}) {
   // If item already has a non-empty heroImage or coverImage URL
   if (item.heroImage && typeof item.heroImage === 'string' && item.heroImage.trim() !== '') {
-    return item.heroImage;
+    return resolveMediaUrl(item.heroImage);
   }
   if (item.coverImage && typeof item.coverImage === 'string' && item.coverImage.trim() !== '') {
-    return item.coverImage;
+    return resolveMediaUrl(item.coverImage);
   }
   if (item.images && Array.isArray(item.images) && item.images.length > 0 && item.images[0]?.url) {
-    return item.images[0].url;
+    return resolveMediaUrl(item.images[0].url);
   }
 
   // Lookup by locationLabel, name, slug, or district
