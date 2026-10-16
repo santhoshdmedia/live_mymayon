@@ -73,7 +73,7 @@ export default function DistrictExplorer() {
                 item={d}
                 to={`/districts/${d.slug}`}
                 title={d.name}
-                tags={`${d.region} | ${d.templeCount || 0} Temples | ${d.idealSeason || 'Year-round'}`}
+                tags={d.tagline || `${d.region} | ${d.templeCount || 0} Temples | ${d.idealSeason || 'Year-round'}`}
               />
             ))}
           </div>

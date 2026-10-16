@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { MapPin, CalendarDays, Landmark, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { MapPin, CalendarDays, Landmark, ArrowLeft, CheckCircle2, Sparkles, Compass } from 'lucide-react';
 import { useFetch } from '../../hooks/useFetch';
 import { fetchDistrict, fetchPackages } from '../../api';
 import { Spinner, ErrorBlock } from '../../components/ui/States';
@@ -7,6 +7,7 @@ import { FramedMedia, Divider } from '../../components/ui/Ornament';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
+import { getCoverImage } from '../../utils/imageResolver';
 
 export default function DistrictDetail() {
   const { slug } = useParams();
@@ -19,17 +20,20 @@ export default function DistrictDetail() {
   if (dLoad) return <Spinner className="min-h-[60vh]" />;
   if (dErr || !d) return <ErrorBlock message={dErr || 'District not found'} />;
 
+  const heroImg = d.heroImage || getCoverImage(d);
+
   return (
     <div>
       {/* Hero */}
       <section className="relative h-72 sm:h-96 bg-navy-800 overflow-hidden">
-        {d.heroImage
-          ? <img src={d.heroImage} alt={d.name} className="w-full h-full object-cover opacity-70" />
-          : <div className="w-full h-full bg-navy-radial flex items-center justify-center">
-              <span className="font-display text-9xl text-white/10 font-bold">{d.name[0]}</span>
-            </div>
-        }
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
+        {heroImg ? (
+          <img src={heroImg} alt={d.name} className="w-full h-full object-cover opacity-75" />
+        ) : (
+          <div className="w-full h-full bg-navy-radial flex items-center justify-center">
+            <span className="font-display text-9xl text-white/10 font-bold">{d.name[0]}</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent" />
         <div className="absolute bottom-6 left-0 right-0">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link to="/destinations/district-explorer" className="inline-flex items-center gap-1.5 text-sm text-gold-300 hover:text-gold-200 mb-3 transition">
@@ -50,11 +54,51 @@ export default function DistrictDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main */}
           <div className="lg:col-span-2 space-y-8">
+            {/* Tagline & Chapter Narrative */}
             <div>
+              {d.tagline && (
+                <div className="mb-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-50 border border-gold-200 text-gold-800 text-xs font-bold uppercase tracking-wider mb-2">
+                    <Sparkles className="w-3.5 h-3.5 text-gold-600" />
+                    <span>Tamil Nadu in 38 Chapters</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-navy-900 leading-snug italic">
+                    "{d.tagline}"
+                  </h2>
+                </div>
+              )}
+
               <Badge>About {d.name}</Badge>
               <Divider className="my-3" />
-              <p className="text-navy-600 leading-relaxed text-base">{d.overview}</p>
+              <p className="text-navy-700 leading-relaxed text-base sm:text-lg font-normal">
+                {d.overview}
+              </p>
             </div>
+
+            {/* Quick-Start Experience Strip */}
+            {d.experience?.length > 0 && (
+              <div className="bg-gradient-to-r from-gold-500/15 via-amber-500/5 to-transparent border-l-4 border-gold-500 p-5 rounded-r-2xl shadow-sm">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-800 mb-1.5">
+                  <Compass className="w-4 h-4 text-gold-600" />
+                  <span>Signature Experience Strip</span>
+                </div>
+                <p className="text-navy-900 font-medium text-sm sm:text-base leading-relaxed">
+                  {d.experience.join(" · ")}
+                </p>
+              </div>
+            )}
+
+            {/* Who This Is For */}
+            {d.whoIsThisFor && (
+              <div className="bg-navy-50/70 border border-navy-100 rounded-2xl p-5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-navy-700 mb-1.5">
+                  ✦ Who This Is For
+                </h4>
+                <p className="text-navy-600 text-sm leading-relaxed font-medium">
+                  {d.whoIsThisFor}
+                </p>
+              </div>
+            )}
 
             {d.highlights?.length > 0 && (
               <div>
@@ -64,6 +108,22 @@ export default function DistrictDetail() {
                     <div key={h} className="flex items-start gap-2.5 bg-gold-50 border border-gold-100 rounded-xl p-3">
                       <CheckCircle2 className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
                       <span className="text-navy-700 text-sm font-medium">{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Package Inclusions */}
+            {d.inclusions?.length > 0 && (
+              <div className="bg-white border border-navy-100 rounded-2xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-navy-800 mb-1">Standard & Curated Inclusions</h3>
+                <p className="text-xs text-navy-400 mb-4">Included in every curated My Mayon district experience</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {d.inclusions.map((inc) => (
+                    <div key={inc} className="flex items-center gap-2 text-sm text-navy-700 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                      <span>{inc}</span>
                     </div>
                   ))}
                 </div>
