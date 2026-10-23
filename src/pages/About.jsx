@@ -30,6 +30,8 @@ import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FaWhatsapp } from 'react-icons/fa';
+import FoundersNote from '../components/home/FoundersNote';
+
 
 // The 6 Core Tourism Categories from PDF Pages 2-7
 const TOURISM_CATEGORIES = [
@@ -318,7 +320,7 @@ export default function About() {
 
   return (
     <div ref={ref} className="bg-cream text-navy-900 overflow-hidden">
-      
+
       {/* 1. HERO SECTION (PDF Page 1) */}
       <section className="relative bg-navy-radial text-cream py-24 lg:py-32 overflow-hidden">
         <TriangleWatermark className="absolute -top-10 -right-20 w-[450px] opacity-[0.08] rotate-12" />
@@ -357,7 +359,7 @@ export default function About() {
       {/* 2. THE SIX CURATED TOURISM CATEGORIES (PDF Pages 2–7) */}
       <section className="py-20 lg:py-28 bg-white border-b border-navy-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto scroll-reveal reveal-up">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/15 text-gold-700 border border-gold-400/30 uppercase tracking-widest mb-3">
               ✦ Curated Tourism Spectrum
@@ -380,11 +382,10 @@ export default function About() {
                   key={c.id}
                   type="button"
                   onClick={() => setActiveCategory(c.id)}
-                  className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between cursor-pointer ${
-                    isSelected
+                  className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between cursor-pointer ${isSelected
                       ? 'bg-navy-900 text-white border-gold-400 shadow-xl scale-[1.02]'
                       : 'bg-cream/60 hover:bg-white text-navy-800 border-navy-100 hover:border-gold-300'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between w-full mb-2">
                     <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-gold-300' : 'text-navy-400'}`}>
@@ -403,7 +404,7 @@ export default function About() {
           {/* Active Category Display Showcase */}
           <div className="mt-8 bg-gradient-to-br from-[#0a1a30] via-[#0d223f] to-[#0a1a30] rounded-3xl p-6 sm:p-10 border border-gold-400/30 text-white shadow-2xl relative overflow-hidden scroll-reveal reveal-up">
             <div className="relative z-10 space-y-6">
-              
+
               {/* Category Header */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
@@ -466,7 +467,7 @@ export default function About() {
       {/* 3. FEATURED DESTINATIONS SNAPSHOT (PDF Page 8) */}
       <section className="py-20 lg:py-24 bg-cream relative border-b border-navy-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto scroll-reveal reveal-up">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-navy-900 text-gold-300 uppercase tracking-widest mb-3">
               ✦ Portfolio Snapshot
@@ -525,7 +526,7 @@ export default function About() {
       {/* 4. WHY CHOOSE MYMAYON (PDF Page 9) */}
       <section className="py-20 lg:py-28 bg-white border-b border-navy-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto scroll-reveal reveal-up">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/15 text-gold-700 border border-gold-400/30 uppercase tracking-widest mb-3">
               ✦ The MyMayon Difference
@@ -563,13 +564,14 @@ export default function About() {
 
         </div>
       </section>
+      <FoundersNote />
 
       {/* 5. BRAND STORY, VISION & MISSION */}
       <section className="py-20 lg:py-24 bg-cream relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Story narrative */}
             <div className="lg:col-span-7 space-y-6 scroll-reveal reveal-left">
               <span className="text-xs font-bold uppercase tracking-widest text-gold-600">Our Origin Story</span>
@@ -611,7 +613,7 @@ export default function About() {
       {/* 6. BEGIN YOUR JOURNEY WITH MYMAYON (PDF Page 10) */}
       <section className="py-20 lg:py-28 bg-[#0a1a30] text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
+
           <div className="max-w-3xl mb-12 scroll-reveal reveal-up">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-400/30 uppercase tracking-widest mb-3">
               ✦ Begin Your Journey
@@ -626,7 +628,7 @@ export default function About() {
 
           {/* 3 Action Pillars (PDF Page 10) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 scroll-reveal reveal-up">
-            
+
             <div className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold-400/40 rounded-3xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-400/30 flex items-center justify-center text-gold-400 mb-4">

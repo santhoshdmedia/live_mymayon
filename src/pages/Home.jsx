@@ -10,7 +10,7 @@ import VisualDirectory from '../components/home/VisualDirectory';
 import WildAndCulinary from '../components/home/WildAndCulinary';
 import TravelSmart from '../components/home/TravelSmart';
 import Benefits from '../components/home/Benefits';
-import FoundersNote from '../components/home/FoundersNote';
+// import FoundersNote from '../components/home/FoundersNote';
 import Destinations from '../components/home/Destinations';
 import GalleryPreview from '../components/home/GalleryPreview';
 import CTA from '../components/home/CTA';
@@ -58,7 +58,7 @@ export default function Home() {
       <Benefits />
 
       {/* 14. Founder's vision & note */}
-      <FoundersNote />
+      {/* <FoundersNote /> */}
 
       {/* 15. Photographic gallery preview */}
       <GalleryPreview />
